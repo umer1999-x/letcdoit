@@ -85,9 +85,10 @@ async function sendMail(email,password, res) {
             subject: "You Are The Member!",
             html: createEmailHTML(email, password)
         });
-
+        console.log({info})
         res.send(JSON.stringify({ success: true }));
     } catch (err) {
+        console.log({err});
         res.send(JSON.stringify({ error: "Some error occured" }));
     }
 }
