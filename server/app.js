@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 app.use(require("./routes/index.js"));
-
+app.use(express.static('assets'));
 
 app.listen(8080, () => {
     console.log("server is running at post 8080");
