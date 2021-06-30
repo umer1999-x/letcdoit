@@ -6,7 +6,7 @@ function Existuser(req, res, next) {
         if (find) {
             console.log("user already occured");
             res.send(
-                JSON.stringify({ mess: "Email already exist please change the mail!" })
+                JSON.stringify({ error: "Email already exist please change the mail!" })
             );
         } else {
             next();
@@ -34,7 +34,7 @@ function Check_USER(req, res, next) {
 
 function inputValidation(req, res, next) {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) res.send(JSON.stringify({ mess: "Please enter the valid Email" }));
+    if (!errors.isEmpty()) res.send(JSON.stringify({ mess: "Please enter the valid fields" }));
     else next();
 }
 

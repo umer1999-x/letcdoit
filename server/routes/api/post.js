@@ -7,13 +7,23 @@ const {body} = require('express-validator');
 const { generateP, sendMail } = require("../../routines/routines.js")
 const { inputValidation,Check_USER,Existuser } = require("../../middlewares/middlewares.js")
 
-apiPost.post("/signup",
+apiPost.post("/api/signup",
     body("email")
         .not()
         .isEmpty()
         .withMessage(`Email is empty`)
         .isEmail()
         .withMessage("Email is not valid")
+        .trim(),
+    body("password")
+        .not()
+        .isEmpty()
+        .withMessage(`Password is empty`)
+        .trim(),
+    body("name")
+        .not()
+        .isEmpty()
+        .withMessage(`Name is empty`)
         .trim(),
     inputValidation,
     Existuser,
@@ -25,7 +35,7 @@ apiPost.post("/signup",
                 sendMail(data.email, result.pass);
             }).catch(err => {
                 //
-            })
+            });
 
         }).catch(err => {
             //

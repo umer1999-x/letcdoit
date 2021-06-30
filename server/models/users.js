@@ -14,7 +14,7 @@ const letcdoit = new mongoose.Schema({
     fullname: {
         type: String,
         requried: true
-    }
+    },
 
 });
 
