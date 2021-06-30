@@ -36,7 +36,7 @@ function inputValidation(req, res, next) {
     const errors = validationResult(req);
     console.log({errors});
     errors.errors.forEach(element => {
-        console({element});
+        console.log({element});
     });
     if (!errors.isEmpty()) res.send(JSON.stringify({ error: "Please enter the valid fields" }));
     else next();
