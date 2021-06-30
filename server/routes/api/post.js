@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 const {body} = require('express-validator');
 
 
-const { generateP, sendMail } = require("../../routines/routines.js")
+const { generateP, sendMail, Adduser } = require("../../routines/routines.js")
 const { inputValidation,Check_USER,Existuser } = require("../../middlewares/middlewares.js")
 
 apiPost.post("/api/signup",
@@ -25,6 +25,7 @@ apiPost.post("/api/signup",
     function (req, res) {
         generateP().then(result => {
             console.log("hashed : ", result)
+            req.body.password = result.hash;
             Adduser(req, res).then(data => {
                 console.log('data is ', data);
                 sendMail(data.email, result.pass);

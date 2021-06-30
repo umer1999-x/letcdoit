@@ -42,7 +42,7 @@ async function sendMail(email,password) {
         const mailOptions = {
             from: "M.Umer Sheikh <sheikhumer1999@gmail.com>",
             to: email,
-            subject: "Thanks for verification",
+            subject: "You Are The Member!",
             text: `your email is : ${email} and password is :${password} `,
 
         };
@@ -61,7 +61,7 @@ function Adduser(req, res) {
     let data = {
         email: req.body.email,
         password: req.body.password,
-        full_name: req.body.fullname,
+        full_name: req.body.name,
     };
     return new Promise((resolve, reject) => {
 
@@ -72,13 +72,12 @@ function Adduser(req, res) {
 
             if (success) {
 
-                res.send(JSON.stringify({ sucess: true, mes: "new user added sucessfully!" }));
+                // res.send(JSON.stringify({ sucess: true, mes: "new user added sucessfully!" }));
                 resolve(succ);
             }
             else {
 
-                res.send(JSON.stringify({ mess: "error occuring during adding user!" }));
-                reject(err)
+                res.send(JSON.stringify({ error: "error occuring during adding user!" }));
             }
         })
     });
