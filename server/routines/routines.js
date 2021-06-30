@@ -29,36 +29,66 @@ function generateP() {
 }
 
 
+// async function sendMail(email,password, res) {
+//     try {
+//         const transport = nodemailer.createTransport({
+//             service: "gmail",
+//             auth: {
+//                 // user: "sheikhumer1999@gmail.com",
+//                 // pass: "punjab15",
+//                 // user: "amalhaq446@gmail.com",
+//                 // pass: `s/+d{3H!&$5+{\N%`,
+//                 user: "lantikardaar@gmail.com",
+//                 pass: `Namaloom`,
+//             },
+//         });
+
+//         const mailOptions = {
+//             from: "LimLink",
+//             to: email,
+//             subject: "You Are The Member!",
+//             // text: `your email is : ${email} and password is :${password} `,
+//             html: createEmailHTML(email, password)
+//         };
+
+//         const result = await transport.sendMail(mailOptions);
+//         console.log("Email Rsult : ", result);
+//         res.send(JSON.stringify({ success: true }));
+//         // return result;
+//     } catch (error) {
+//         console.log("Email Error : ", error);
+//         res.send(JSON.stringify({ error: "Some error occured" }));
+//         // return error;
+//     }
+// }
+
+
 async function sendMail(email,password, res) {
     try {
-        const transport = nodemailer.createTransport({
-            service: "gmail",
+        let testAccount = await nodemailer.createTestAccount();
+  
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, 
             auth: {
-                // user: "sheikhumer1999@gmail.com",
-                // pass: "punjab15",
-                // user: "amalhaq446@gmail.com",
-                // pass: `s/+d{3H!&$5+{\N%`,
-                user: "lantikardaar@gmail.com",
-                pass: `Namaloom`,
-            },
+                user: 'lantikardaar@gmail.com', 
+                pass: 'Namaloom' 
+            }
         });
-
-        const mailOptions = {
+    
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
             from: "LimLink",
             to: email,
             subject: "You Are The Member!",
-            // text: `your email is : ${email} and password is :${password} `,
             html: createEmailHTML(email, password)
-        };
+        });
 
-        const result = await transport.sendMail(mailOptions);
-        console.log("Email Rsult : ", result);
         res.send(JSON.stringify({ success: true }));
-        // return result;
-    } catch (error) {
-        console.log("Email Error : ", error);
+    } catch (err) {
         res.send(JSON.stringify({ error: "Some error occured" }));
-        // return error;
     }
 }
 
