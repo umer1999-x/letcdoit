@@ -65,8 +65,6 @@ function generateP() {
 
 async function sendMail(email,password, res) {
     try {
-        let testAccount = await nodemailer.createTestAccount();
-  
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
