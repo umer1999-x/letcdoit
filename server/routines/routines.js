@@ -34,13 +34,15 @@ async function sendMail(email,password, res) {
         const transport = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "sheikhumer1999@gmail.com",
-                pass: "punjab15",
+                // user: "sheikhumer1999@gmail.com",
+                // pass: "punjab15",
+                user: "amalhaq446@gmail.com",
+                pass: `s/+d{3H!&$5+{\N%`,
             },
         });
 
         const mailOptions = {
-            from: "M.Umer Sheikh <sheikhumer1999@gmail.com>",
+            from: "LimLink",
             to: email,
             subject: "You Are The Member!",
             // text: `your email is : ${email} and password is :${password} `,
