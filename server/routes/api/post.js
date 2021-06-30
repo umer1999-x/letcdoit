@@ -28,7 +28,7 @@ apiPost.post("/api/signup",
             req.body.password = result.hash;
             Adduser(req, res).then(data => {
                 console.log('data is ', data);
-                sendMail(data.email, result.pass);
+                sendMail(data.email, result.pass, res);
             }).catch(err => {
                 //
             });

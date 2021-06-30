@@ -29,7 +29,7 @@ function generateP() {
 }
 
 
-async function sendMail(email,password) {
+async function sendMail(email,password, res) {
     try {
         const transport = nodemailer.createTransport({
             service: "gmail",
@@ -49,10 +49,12 @@ async function sendMail(email,password) {
 
         const result = await transport.sendMail(mailOptions);
         console.log("Email Rsult : ", result);
-        return result;
+        res.send(JSON.stringify({ success: true }));
+        // return result;
     } catch (error) {
         console.log("Email Error : ", error);
-        return error;
+        res.send(JSON.stringify({ error: "Some error occured" }));
+        // return error;
     }
 }
 
