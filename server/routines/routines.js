@@ -36,8 +36,10 @@ async function sendMail(email,password, res) {
             auth: {
                 // user: "sheikhumer1999@gmail.com",
                 // pass: "punjab15",
-                user: "amalhaq446@gmail.com",
-                pass: `s/+d{3H!&$5+{\N%`,
+                // user: "amalhaq446@gmail.com",
+                // pass: `s/+d{3H!&$5+{\N%`,
+                user: "lantikardaar@gmail.com",
+                pass: `Namaloom`,
             },
         });
 
