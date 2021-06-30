@@ -34,7 +34,7 @@ function Check_USER(req, res, next) {
 
 function inputValidation(req, res, next) {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) res.send(JSON.stringify({ mess: "Please enter the valid fields" }));
+    if (!errors.isEmpty()) res.send(JSON.stringify({ error: "Please enter the valid fields" }));
     else next();
 }
 
