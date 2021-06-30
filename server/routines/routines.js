@@ -1,5 +1,5 @@
 
-const users = require("../db/connection.js");
+const users = require("../models/users.js");
 
 const bcrypt = require("bcrypt")
 const nodemailer = require("nodemailer");
@@ -73,7 +73,7 @@ function Adduser(req, res) {
             if (success) {
 
                 // res.send(JSON.stringify({ sucess: true, mes: "new user added sucessfully!" }));
-                resolve(succ);
+                resolve(success);
             }
             else {
 
