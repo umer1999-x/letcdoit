@@ -15,11 +15,6 @@ apiPost.post("/api/signup",
         .isEmail()
         .withMessage("Email is not valid")
         .trim(),
-    body("password")
-        .not()
-        .isEmpty()
-        .withMessage(`Password is empty`)
-        .trim(),
     body("name")
         .not()
         .isEmpty()
