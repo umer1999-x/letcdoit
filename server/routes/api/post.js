@@ -41,7 +41,7 @@ apiPost.post("/api/signup",
 
 
 
-apiPost.post('/signin', body("email")
+apiPost.post('/api/signin', body("email")
     .not()
     .isEmpty()
     .withMessage(`Email is empty`)
@@ -56,7 +56,7 @@ apiPost.post('/signin', body("email")
             }
             else {
                 if (result) {
-                    res.send(JSON.stringify({ success: "success" }))
+                    res.send(JSON.stringify({ success: true }))
 
                 } else {
                     res.send(JSON.stringify({ error: "incorrent" }))
